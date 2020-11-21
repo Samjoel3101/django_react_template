@@ -1,3 +1,35 @@
+/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 10:121-141 */
+
+/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 11:504-524 */
+
+/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 12:312-332 */
+
+/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 13:15-35 */
+
+/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 16:248-268 */
+
+/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 19:56-76 */
+
+/*! CommonJS bailout: exports.unstable_shouldYield(...) prevents optimization as exports is passed as call context at 16:106-134 */
+
+/*! CommonJS bailout: module.exports is used directly at 103:0-14 */
+
+/*! CommonJS bailout: module.exports is used directly at 12:0-14 */
+
+/*! CommonJS bailout: module.exports is used directly at 16:0-14 */
+
+/*! CommonJS bailout: module.exports is used directly at 18:2-16 */
+
+/*! CommonJS bailout: module.exports is used directly at 1:0-14 */
+
+/*! CommonJS bailout: module.exports is used directly at 1:65-79 */
+
+/*! CommonJS bailout: module.exports is used directly at 65:0-14 */
+
+/*! CommonJS bailout: module.exports is used directly at 6:0-14 */
+
+/*! CommonJS bailout: this is used directly at 1:279-283 */
+
 /*! default exports */
 
 /*! dynamic exports */
@@ -436,6 +468,8 @@
 
 /*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
 
+/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
+
 /*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_exports__, __webpack_require__.r, __webpack_require__.g, __webpack_require__.d, __webpack_require__.* */
 
 /*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
@@ -450,6 +484,8 @@
 
 /*! runtime requirements: module, __webpack_require__ */
 
+/*! runtime requirements: module, top-level-this-exports, __webpack_require__ */
+
 /*! unknown exports (runtime-defined) */
 
 /*!**********************!*\
@@ -459,6 +495,10 @@
 /*!*******************************!*\
   !*** ./src/components/App.js ***!
   \*******************************/
+
+/*!**********************************!*\
+  !*** ./src/components/NavBar.js ***!
+  \**********************************/
 
 /*!*************************************!*\
   !*** ./node_modules/react/index.js ***!
@@ -508,6 +548,10 @@
   !*** ./node_modules/object-assign/index.js ***!
   \*********************************************/
 
+/*!*********************************************!*\
+  !*** ./src/components/Login/GoogleLogin.js ***!
+  \*********************************************/
+
 /*!**********************************************!*\
   !*** ./node_modules/path-to-regexp/index.js ***!
   \**********************************************/
@@ -535,6 +579,10 @@
 /*!*************************************************************!*\
   !*** ./node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
   \*************************************************************/
+
+/*!**************************************************************!*\
+  !*** ./node_modules/react-google-login/dist/google-login.js ***!
+  \**************************************************************/
 
 /*!**************************************************************!*\
   !*** ./node_modules/react-is/cjs/react-is.production.min.js ***!

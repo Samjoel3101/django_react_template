@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import UrlRouter from '../Url/Route'; 
 
 class HomePage extends Component {
     render() {
         return (
             <div>
-                <UrlRouter />                
+                <h1>Hello</h1>            
             </div>
         )
     }
 }
 
-export default HomePage
+export default HomePage;
