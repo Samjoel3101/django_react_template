@@ -6,8 +6,7 @@ import UrlRouter from './Url/Route';
 export default class App extends Component {
     render() {
         return (
-            <div>
-                             
+            <div>             
                 <UrlRouter />
             </div>
         )

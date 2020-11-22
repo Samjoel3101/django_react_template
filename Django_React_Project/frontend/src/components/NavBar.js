@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import {Link} from 'react-router-dom'; 
+import {NavBar} from 'react-bootstrap';
 import GoogleLogin from './Login/GoogleLogin'; 
 
 function NavBar() {

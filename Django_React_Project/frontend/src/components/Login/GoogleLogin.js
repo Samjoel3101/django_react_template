@@ -9,33 +9,36 @@ class GoogleLogin extends Component {
         this.state = {
             isLoggedIn: false, 
             accesstoken :''
-        }
-        this.login = (response) => {
-            if (response.accesstoken) {
-                this.setState({
-                    isLoggedIn: true, 
-                    accesstoken: response.accesstoken 
-                })
-                console.log(response.accesstoken)
-            }
-        }
+        }  
+        this.login = this.login.bind(this);
+        this.logout = this.logout.bind(this);
+        this.handleLoginFailure = this.handleLoginFailure.bind(this);
+        this.handleLogoutFailure = this.handleLogoutFailure.bind(this)
 
-        this.logout = (response) => {
-            this.setState({
-                isLoggedIn: false, 
-                accesstoken: ''
-            })
-        }
-
-        this.handleLoginFailure = (response) => {
-            alert ('Failed to login')
-        }
-
-        this.handleLogoutFailure = (response) => {
-            alert ('Failed to logout')
-        }
+    }
+    login(response){
+        console.log(response);
+        this.setState(state => ({
+            isLoggedIn:true, 
+            accesstoken: response.accesstoken 
+        }))
+    }
+    logout(response){
+        console.log(response); 
+        this.setState(state => ({
+            isLoggedIn:false, 
+            accesstoken: ''
+        }))
     }
 
+    handleLoginFailure(response){
+        console.log(response); 
+        alert('Error login')
+    }
+    handleLogoutFailure(response){
+        console.log(response);
+        alert('Error logout')
+    }
     render() {
         return (
             <div>
