@@ -2,7 +2,8 @@
 
 const UrlComponents = {}; 
 
-UrlComponents['/login'] = require('../Login/UserLogin').default;
-UrlComponents['/'] = require('../Home/HomePage').default; 
+UrlComponents['/'] = require('../Home/HomePage').default;
+UrlComponents['/login'] = require('../AuthComponents/UserLogin').default;
+UrlComponents['/signup'] = require('../AuthComponents/SignUp').default;
 
 export default UrlComponents; 

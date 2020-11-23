@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Django React Project</title>
+    {% load static%}
 </head>
 
 <body>
 
-    <div id='main' class = 'container'>
+    <div id='main'>
       <div id='app'>
       </div>
     </div>
-    {% load static%}
+    
     <script src="{% static 'frontend/main.js' %}"></script>
 
 </body>
