@@ -11,12 +11,8 @@ function RouteUrl(UrlArray){
     return route_elements; 
 }
 
-class UrlRouter extends Component{
-    constructor(props){
-        super(props)
-    }
+const UrlRouter = () => {
 
-    render(){
         return (
             <div>
                 <Router>
@@ -28,7 +24,7 @@ class UrlRouter extends Component{
 
             </div>
         )
-    }
+    
 
 }
 
