@@ -1,51 +1,3 @@
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 10:121-141 */
-
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 11:504-524 */
-
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 12:312-332 */
-
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 13:15-35 */
-
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 16:248-268 */
-
-/*! CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 19:56-76 */
-
-/*! CommonJS bailout: exports.unstable_shouldYield(...) prevents optimization as exports is passed as call context at 16:106-134 */
-
-/*! CommonJS bailout: module.exports is used directly at 103:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 12:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 16:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 18:2-16 */
-
-/*! CommonJS bailout: module.exports is used directly at 1:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 1:65-79 */
-
-/*! CommonJS bailout: module.exports is used directly at 230:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 41:38-52 */
-
-/*! CommonJS bailout: module.exports is used directly at 42:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 43:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 43:2-16 */
-
-/*! CommonJS bailout: module.exports is used directly at 49:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 62:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 65:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 6:0-14 */
-
-/*! CommonJS bailout: module.exports is used directly at 9:0-14 */
-
-/*! CommonJS bailout: this is used directly at 1:279-283 */
-
 /*! default exports */
 
 /*! dynamic exports */
@@ -53,6 +5,8 @@
 /*! export AsyncMode [provided] [no usage info] [missing usage info prevents renaming] */
 
 /*! export AsyncMode [provided] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react-is/cjs/react-is.production.min.js .AsyncMode */
+
+/*! export AuthProvider [provided] [no usage info] [missing usage info prevents renaming] */
 
 /*! export BrowserRouter [provided] [no usage info] [missing usage info prevents renaming] */
 
@@ -182,6 +136,8 @@
 
 /*! export __esModule [not provided] [no usage info] [missing usage info prevents renaming] */
 
+/*! export authContext [provided] [no usage info] [missing usage info prevents renaming] */
+
 /*! export canAcceptRef [provided] [no usage info] [missing usage info prevents renaming] */
 
 /*! export cleanCookies [provided] [no usage info] [missing usage info prevents renaming] */
@@ -189,6 +145,8 @@
 /*! export cloneElement [provided] [no usage info] [missing usage info prevents renaming] */
 
 /*! export cloneElement [provided] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react/cjs/react.production.min.js .cloneElement */
+
+/*! export cookie [provided] [no usage info] [missing usage info prevents renaming] */
 
 /*! export createBootstrapComponent [provided] [no usage info] [missing usage info prevents renaming] */
 
@@ -225,6 +183,8 @@
 /*! export default [provided] [no usage info] [missing usage info prevents renaming] */
 
 /*! export defaultKey [provided] [no usage info] [missing usage info prevents renaming] */
+
+/*! export djangoFetch [provided] [no usage info] [missing usage info prevents renaming] */
 
 /*! export findDOMNode [provided] [no usage info] [missing usage info prevents renaming] */
 
@@ -587,6 +547,10 @@
   \*******************************/
 
 /*!**********************************!*\
+  !*** ./src/components/Cookie.js ***!
+  \**********************************/
+
+/*!**********************************!*\
   !*** ./src/components/NavBar.js ***!
   \**********************************/
 
@@ -670,6 +634,10 @@
   !*** ./node_modules/dom-helpers/esm/listen.js ***!
   \************************************************/
 
+/*!************************************************!*\
+  !*** ./src/components/contexts/AuthContext.js ***!
+  \************************************************/
+
 /*!*************************************************!*\
   !*** ./node_modules/react-bootstrap/esm/Col.js ***!
   \*************************************************/
@@ -724,6 +692,10 @@
 
 /*!***************************************************!*\
   !*** ./node_modules/react-bootstrap/esm/Alert.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/components/djangoUtils/djangoFetch.js ***!
   \***************************************************/
 
 /*!****************************************************!*\

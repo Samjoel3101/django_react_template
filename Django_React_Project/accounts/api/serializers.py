@@ -6,7 +6,7 @@ from rest_framework.authtoken.models import Token
 
 class CheckUserSerializer(Serializer): 
 
-    token = serializers.CharField(write_only = True) 
+    token = serializers.CharField(max_length = 120)  
 
     def validate(self, data):
         token = data.get('token') 

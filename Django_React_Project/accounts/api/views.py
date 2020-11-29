@@ -22,8 +22,8 @@ class CheckUserAPIView(APIView):
                 token_username = token_obj.user.username 
             
                 if request.user.username == token_username:
-                    return Response(data = {'valid_user': True}, status = 200) 
+                    return Response(data = {"valid_user": 'true'}, status = 200) 
     
-        return Response(data = {'valid_user': False}, status = 400) 
+        return Response(data = {"valid_user": 'false', "errors": serialized_data.errors}, status = 400) 
     
     
