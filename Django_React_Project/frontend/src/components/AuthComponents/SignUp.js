@@ -5,8 +5,10 @@ import {useHistory} from 'react-router-dom';
 
 import useForm from '../Hooks/useForm';
 import {formGroup} from '../utils/formUtils';
+import {authContext} from '../contexts/AuthContext'; 
 
 function SignUp() {
+    const [isLoggedIn, setIsLoggedIn] = authContext() 
     const intialFormValues = {username:'', email: '', 
                               password: '', confirmPassword: ''}
 
@@ -72,7 +74,9 @@ function SignUp() {
                 else{
                     setFormError(initialErrorValues)
                    localStorage.setItem('key', response.key)
-                   alert('Logged In Successfully')
+                   localStorage.setItem('loggedIn', 'true') 
+                   setIsLoggedIn(true)
+                   alert('Registered Successfully')
                    history.push('/')
                 }
             }).catch (errors => {
@@ -80,7 +84,7 @@ function SignUp() {
             })
        
     };
-    console.log(formError);
+
     return (
         <div>
             <Form onSubmit = {onFormSubmit}>

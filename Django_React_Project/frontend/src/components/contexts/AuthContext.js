@@ -12,18 +12,19 @@ export  function AuthProvider ({children}) {
     
     useEffect(async ()=> {
         if (!isLoggedIn){
-            console.log('render')
         if (validUser){
-            console.log(validUser)
             setLoading(false)
             setIsLoggedIn(true)
             localStorage.setItem('loggedIn', validUser)
             
         }
         if (!validUser){
-            console.log('render')
-        var token = localStorage.getItem('key')
-        
+        var key = localStorage.getItem('key')
+        var token = key === 'null' || key === 'undefined' ? false : key
+        console.log(token)
+        if (!token){
+            setLoading(false)
+        }
         if (token){
             const checkEndpoint = '/api/accounts/check-user/'
             const data = {'token': token}
@@ -31,7 +32,6 @@ export  function AuthProvider ({children}) {
             var result = await djangoFetch({urlEndpoint:checkEndpoint, urlMethod: 'POST', sendData:data, 
                 response_function: (response, status_code) => {
                     if (status_code === 200 && response.valid_user === 'true'){
-                        console.log('response', status_code)
                         return true
                     }
                 }})            
@@ -45,7 +45,7 @@ export  function AuthProvider ({children}) {
 
     if (!loading){
     return (
-        <AuthContext.Provider value = {[isLoggedIn]}>
+        <AuthContext.Provider value = {[isLoggedIn, setIsLoggedIn]}>
             {children}
         </AuthContext.Provider>
     )}else{
