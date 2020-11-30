@@ -17,10 +17,8 @@ export async function djangoFetch({urlEndpoint, sendData, urlMethod = 'GET',
     if (csrf){
         lookUpOptions.headers['X-CSRFToken'] = cookie.get('csrftoken')
     }
-    console.log(lookUpOptions)
 
     return await fetch(urlEndpoint, lookUpOptions).then(response => {
-        console.log(response)
         status_code = response.status
         return response.json() 
     }).then(

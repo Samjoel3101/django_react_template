@@ -5,16 +5,25 @@ import {cookie} from '../Cookie'
 const AuthContext = createContext()
 
 export  function AuthProvider ({children}) {
-    const [user, setUser] = useState(null) 
-    const [validUser, setValidUser] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const [isLoggedIn, setIsLoggedIn] = useState(false) 
-
+    const loggedIn = localStorage.getItem('loggedIn') === 'false' ? false : true
+    const [validUser, setValidUser] = useState(loggedIn)
+    const [loading, setLoading] = useState(!loggedIn)
+    const [isLoggedIn, setIsLoggedIn] = useState(loggedIn) 
+    
     useEffect(async ()=> {
-        console.log(validUser)
+        if (!isLoggedIn){
+            console.log('render')
+        if (validUser){
+            console.log(validUser)
+            setLoading(false)
+            setIsLoggedIn(true)
+            localStorage.setItem('loggedIn', validUser)
+            
+        }
         if (!validUser){
+            console.log('render')
         var token = localStorage.getItem('key')
-        var userDetailEndpoint = '/api/accounts/user-detail/'
+        
         if (token){
             const checkEndpoint = '/api/accounts/check-user/'
             const data = {'token': token}
@@ -25,20 +34,23 @@ export  function AuthProvider ({children}) {
                         console.log('response', status_code)
                         return true
                     }
-                }})
-            setValidUser(result)}
-            console.log('userdata', validUser)
-            // setUser(user_data)
-            // setLoading(false) 
-            // setIsLoggedIn(true) 
+                }})            
+            setValidUser(result)
+            }
+
         }
+    }
         
-    }, [validUser, user])
+    }, [validUser])
+
+    if (!loading){
     return (
-        <AuthContext.Provider value = {user}>
+        <AuthContext.Provider value = {[isLoggedIn]}>
             {children}
         </AuthContext.Provider>
-    )
+    )}else{
+        return null 
+    }
 }
 
 export function authContext(){
