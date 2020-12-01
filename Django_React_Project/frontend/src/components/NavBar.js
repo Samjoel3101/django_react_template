@@ -10,7 +10,7 @@ function NavBar() {
 		components = (<Nav.Link href = '/logout'>Logout</Nav.Link>)
 	}else{
 		components =  (
-		<div>
+		<div style = {{'display':'flex'}}>
 			<Nav.Link href = '/signup'>SignUp</Nav.Link>
 			<Nav.Link href = '/login'>Login</Nav.Link>
 			<GoogleLogin/>

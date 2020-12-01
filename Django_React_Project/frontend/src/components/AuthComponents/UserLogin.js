@@ -1,15 +1,16 @@
-import React, { Component } from 'react'
-import {Form} from 'react-bootstrap' 
-import {formGroup} from '../utils/formUtils'
-import useForm from '../Hooks/useForm'
-import {djangoFetch} from '../djangoUtils/djangoFetch' 
+import React, { useState } from 'react'
+import {Form, Button} from 'react-bootstrap' 
 import {useHistory} from 'react-router-dom'
+
+import {djangoFetch} from '../djangoUtils/djangoFetch' 
 import {authContext} from '../contexts/AuthContext' 
+import {formGroup, formAlerts} from '../utils/formUtils'
+import useForm from '../Hooks/useForm'
 
 export default function UserLogin() {
-    var initialValues = {username: '', password: ''}
+    var initialValues = {username: null, password: null}
     const [value, setValue] = useForm(initialValues)    
-    const [error, setError] = useState(initialValues)
+    const [error, setError] = useState(null)
     
 
     const loginEndpoint = '/api/accounts/login/'
@@ -21,13 +22,7 @@ export default function UserLogin() {
         djangoFetch({urlEndpoint:loginEndpoint, urlMethod: 'POST', sendData: value, 
         response_function: (response, status_code) => {
             if (status_code === 400){
-                let errorValues = {'username': null, 'password': null}
-                for (var key in response){
-                    if (key in errorValues){
-                        errorValues[key] = response[key]
-                    }
-                }
-                setError(errorValues)
+                setError(Object.values(response))
             }else {
                 console.log(response) 
                 localStorage.setItem('key', response.key)
@@ -36,11 +31,18 @@ export default function UserLogin() {
             }
         }})
     }
-
+    var components = null 
+    if (error !== null){
+        components = formAlerts(error.flat())
+    }
     return (
         <Form onSubmit = {submitHandler}>
-            {formGroup('text', 'username', 'Username', value.username, setValue, error.username)}
-            {formGroup('password', 'password', 'Password', value.password, setValue, error.password)}
+            {components}
+            {formGroup('text', 'username', 'Username', value.username, setValue, null)}
+            {formGroup('password', 'password', 'Password', value.password, setValue, null)}
+            <Button type = 'submit'>
+                Login
+            </Button>
         </Form>
     )
     

@@ -12,5 +12,4 @@ urlpatterns = [
     path('google-login/', GoogleLoginAPIView.as_view(), name = 'google_login'), 
 
     path('check-user/', CheckUserAPIView.as_view(), name = 'user_check'), 
-    path('user-detail/', UserDetailsView.as_view(), name = 'user_details')
 ]
