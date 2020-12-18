@@ -1,6 +1,8 @@
 const path = require("path");
 const webpack = require("webpack");
 
+const dotenv = require('dotenv').config({path: './src/.env'})
+
 module.exports = {
   entry: "./src/index.js",
   output: {
@@ -33,10 +35,10 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      "process.env": {
-        // This has effect on the react lib size
-        NODE_ENV: JSON.stringify("production"),
-      },
-    }),
+    "process.env": {
+      NODE_ENV: JSON.stringify('Production'),
+      GOOGLE_CLIENT_ID: JSON.stringify(dotenv.parsed.REACT_APP_GOOGLE_CLIENT_ID)
+    },
+  }),
   ],
 };

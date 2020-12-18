@@ -1,7 +1,7 @@
 from django.urls import path 
 
-from rest_auth.registration.views import RegisterView
-from rest_auth.views import LogoutView, LoginView, UserDetailsView  
+from dj_rest_auth.registration.views import RegisterView
+from dj_rest_auth.views import LogoutView, LoginView, UserDetailsView  
 
 from .views import GoogleLoginAPIView, CheckUserAPIView 
 

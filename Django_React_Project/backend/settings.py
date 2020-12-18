@@ -50,8 +50,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 
-    'rest_auth', 
-    'rest_auth.registration',
+    'dj_rest_auth', 
+    'dj_rest_auth.registration',
 
     'rest_framework',
     'rest_framework.authtoken',
@@ -117,6 +117,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -142,3 +146,4 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static-local')
 SITE_ID = 1 
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+

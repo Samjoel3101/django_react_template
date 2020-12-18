@@ -1,10 +1,11 @@
-import React, { Component, useState, useEffect } from 'react';
+import React from 'react';
 import {render} from 'react-dom'; 
 import UrlRouter from './Url/Route';
 import {AuthProvider} from './contexts/AuthContext';
 
-export default function App () {
 
+export default function App () {
+  
     return (
         <AuthProvider >
             <div className = 'container'>             

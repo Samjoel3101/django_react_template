@@ -1,66 +1,51 @@
-import React, { Component } from 'react';
-import {GoogleLogin as GLogin, GoogleLogout as GLogout} from 'react-google-login';
+import React from 'react';
+import {GoogleLogin as GLogin} from 'react-google-login';
+import {useHistory} from 'react-router-dom';
 
-const CLIENT_ID = '654587183766-mridfokt701icdejej7n1bd4hdg044s3.apps.googleusercontent.com'
+import {login} from '../utils/authUtils';
+import {authContext} from '../contexts/AuthContext';
+import {djangoFetch} from '../djangoUtils/djangoFetch';
 
-class GoogleLogin extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            isLoggedIn: false, 
-            accesstoken :''
-        }  
-        this.login = this.login.bind(this);
-        this.logout = this.logout.bind(this);
-        this.handleLoginFailure = this.handleLoginFailure.bind(this);
-        this.handleLogoutFailure = this.handleLogoutFailure.bind(this)
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
 
-    }
-    login(response){
-        console.log(response);
-        this.setState(state => ({
-            isLoggedIn:true, 
-            accesstoken: response.accesstoken 
-        }))
-    }
-    logout(response){
-        console.log(response); 
-        this.setState(state => ({
-            isLoggedIn:false, 
-            accesstoken: ''
-        }))
+export default function GoogleLogin () {
+    const [isLoggedIn, setIsLoggedIn] = authContext() 
+    const history = useHistory() 
+
+    const googleLoginEndpoint = '/api/accounts/google-login/' 
+    const googleLogin = (response) => {
+            if (response.accessToken){
+            djangoFetch({urlEndpoint: googleLoginEndpoint, urlMethod: 'POST',
+            sendData: {'access_token': response.accessToken}, 
+            response_function: (response, status_code) => {
+                if (status_code === 200){
+                    login({key: response.key, setAuthFunc: setIsLoggedIn})
+                    history.push('/')
+                }else{
+                    console.log(response)
+            }
+        }})
+        }else{
+            console.log(response)
+        }
     }
 
-    handleLoginFailure(response){
-        console.log(response); 
-        alert('Error login')
+    const loginFailure = (response) => {
+        alert('Couldnt Log in pls try again')
+        console.log(response)
     }
-    handleLogoutFailure(response){
-        console.log(response);
-        alert('Error logout')
-    }
-    render() {
-        return (
-            <div>
-                {this.state.isLoggedIn ? 
-                <GLogout  
-                    clientId = {CLIENT_ID}
-                    buttonText = 'Logout'
-                    onLogoutSuccess = {this.logout}
-                    onFailure = {this.handleLogoutFailure}/> : 
-                <GLogin 
-                    clientId={ CLIENT_ID }
-                    buttonText='Login'
-                    onSuccess={ this.login }
-                    onFailure={ this.handleLoginFailure }
-                    cookiePolicy={ 'single_host_origin' }
-                    responseType='code,token'
-                /> 
 
-                }
-            </div>
-        )
-    }
+
+    if (!isLoggedIn){
+          return (  <GLogin 
+                clientId={ GOOGLE_CLIENT_ID }
+                buttonText='Login'
+                onSuccess={ googleLogin }
+                onFailure={ loginFailure }
+                cookiePolicy={ 'single_host_origin' }
+                responseType='code, token'
+            />) 
+        }
 }
 
-export default GoogleLogin;
+

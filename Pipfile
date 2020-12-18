@@ -4,12 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
+Django = "*"
 djangorestframework = "*"
-django-rest-auth = "*"
 django-allauth = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.8"
+
+[packages.dj-rest-auth]
+extras = [ "with-social",]
