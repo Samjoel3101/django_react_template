@@ -1,27 +1,18 @@
 import React from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
-import GoogleLogin from './AuthComponents/GoogleLogin'; 
-import {authContext} from './contexts/AuthContext'; 
+ 
+import {useNavContext} from './contexts/NavContext'; 
 
 function NavBar() {
-	const [isLoggedIn, setIsLoggedIn] = authContext()
-	var components = null 
-	if (isLoggedIn){
-		components = (<Nav.Link href = '/logout'>Logout</Nav.Link>)
-	}else{
-		components =  (
-		<div style = {{'display':'flex'}}>
-			<Nav.Link href = '/signup'>SignUp</Nav.Link>
-			<Nav.Link href = '/login'>Login</Nav.Link>
-			<GoogleLogin/>
-		</div>
-		)
-	}
+	const [navComponents, setNavComponents] = useNavContext()
+
     return (
 			<div>
 				<Navbar bg = 'light'>
 					<Navbar.Brand href = '/'>Django React Project</Navbar.Brand>
-					{components}				
+					<div style = {{display: 'flex'}}>
+						{navComponents}
+					</div>				
 				</Navbar> 
 			</div>
     )

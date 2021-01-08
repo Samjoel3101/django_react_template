@@ -68,6 +68,8 @@
 
 /*! export MemoryRouter [provided] [no usage info] [missing usage info prevents renaming] -> ./node_modules/react-router/esm/react-router.js .MemoryRouter */
 
+/*! export NavContextProvider [provided] [no usage info] [missing usage info prevents renaming] */
+
 /*! export NavLink [provided] [no usage info] [missing usage info prevents renaming] */
 
 /*! export Portal [provided] [no usage info] [missing usage info prevents renaming] */
@@ -496,6 +498,8 @@
 
 /*! export useMemo [provided] [no usage info] [provision prevents renaming (no use info)] -> ./node_modules/react/cjs/react.development.js .useMemo */
 
+/*! export useNavContext [provided] [no usage info] [missing usage info prevents renaming] */
+
 /*! export useParams [provided] [no usage info] [missing usage info prevents renaming] */
 
 /*! export useParams [provided] [no usage info] [missing usage info prevents renaming] -> ./node_modules/react-router/esm/react-router.js .useParams */
@@ -681,6 +685,10 @@
 /*!**********************************************!*\
   !*** ./node_modules/path-to-regexp/index.js ***!
   \**********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/components/contexts/NavContext.js ***!
+  \***********************************************/
 
 /*!************************************************!*\
   !*** ./node_modules/dom-helpers/esm/listen.js ***!

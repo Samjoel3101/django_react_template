@@ -6,8 +6,14 @@ import {useHistory} from 'react-router-dom';
 import useForm from '../Hooks/useForm';
 import {formGroup} from '../utils/formUtils';
 import {authContext} from '../contexts/AuthContext'; 
+import {useNavContext} from '../contexts/NavContext'; 
 
 function SignUp() {
+    var [navComponents, setNavComponents] = useNavContext()
+    const [changedNav, setChangedNav] = useState(false)
+  
+    const value = 'signup'
+
     const [isLoggedIn, setIsLoggedIn] = authContext() 
     const intialFormValues = {username:'', email: '', 
                               password: '', confirmPassword: ''}
@@ -19,6 +25,21 @@ function SignUp() {
     
     const [inputValues, inputChange] = useForm(intialFormValues);
     const [formError, setFormError] = useState(initialErrorValues);
+    
+    useEffect(()=> {
+        if (!changedNav)
+        {   
+            var newC = []
+            for (var i in navComponents[0]){
+                if (navComponents[0][i].key !== 'signup'){
+                    newC.push(navComponents[0][i])
+                }
+            }
+            console.log(newC)
+            setNavComponents(oldState =>[newC])
+            setChangedNav(true)
+        }
+    }, [changedNav])
 
     const onFormSubmit = (e)=> {
         e.preventDefault();
@@ -84,20 +105,23 @@ function SignUp() {
             })
        
     };
-
-    return (
-        <div>
-            <Form onSubmit = {onFormSubmit}>
-                {formGroup('text', 'username', 'Username', inputValues.username, inputChange, formError.username)}
-                {formGroup('email', 'email', 'Email Address', inputValues.email, inputChange, formError.email)}
-                {formGroup('password', 'password', 'Password', inputValues.password, inputChange, formError.password1)}
-                {formGroup('password', 'confirmPassword', 'Confirm Password', inputValues.confirmPassword, inputChange, formError.password2)}
-                <Button type = 'submit'>
-                    Submit
-                </Button>
-            </Form>
-        </div>
-    )
+    if (changedNav){
+        return (
+            <div>
+                <Form onSubmit = {onFormSubmit}>
+                    {formGroup('text', 'username', 'Username', inputValues.username, inputChange, formError.username)}
+                    {formGroup('email', 'email', 'Email Address', inputValues.email, inputChange, formError.email)}
+                    {formGroup('password', 'password', 'Password', inputValues.password, inputChange, formError.password1)}
+                    {formGroup('password', 'confirmPassword', 'Confirm Password', inputValues.confirmPassword, inputChange, formError.password2)}
+                    <Button type = 'submit'>
+                        Submit
+                    </Button>
+                </Form>
+            </div>
+        )
+    }else{
+        return null
+    }
 }
 
 export default SignUp;

@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import UrlComponents from './UrlIndex'; 
 import NavBar from '../NavBar.js'; 
+import {NavContextProvider} from '../contexts/NavContext' 
 
 function RouteUrl(UrlArray){
     const route_elements = [];
@@ -19,10 +20,12 @@ const UrlRouter = () => {
         return (
             <div>
                 <Router>
-                    <NavBar/>
-                    <Switch>
-                    {RouteUrl(UrlComponents)}
-                    </Switch>
+                    <NavContextProvider>
+                        <NavBar/>
+                        <Switch>
+                        {RouteUrl(UrlComponents)}
+                        </Switch>
+                    </NavContextProvider>
                 </Router>
 
             </div>

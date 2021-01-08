@@ -14,7 +14,7 @@ export default function GoogleLogin () {
 
     const googleLoginEndpoint = '/api/accounts/google-login/' 
     const googleLogin = (response) => {
-            if (response.accessToken){
+        if (response.accessToken){
             djangoFetch({urlEndpoint: googleLoginEndpoint, urlMethod: 'POST',
             sendData: {'access_token': response.accessToken}, 
             response_function: (response, status_code) => {
@@ -22,10 +22,12 @@ export default function GoogleLogin () {
                     login({key: response.key, setAuthFunc: setIsLoggedIn})
                     history.push('/')
                 }else{
+                    console.log('error')
                     console.log(response)
-            }
+                }
         }})
         }else{
+            console.log('no access code')
             console.log(response)
         }
     }
@@ -45,6 +47,8 @@ export default function GoogleLogin () {
                 cookiePolicy={ 'single_host_origin' }
                 responseType='code, token'
             />) 
+    }else {
+            return null 
         }
 }
 

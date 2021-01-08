@@ -8,7 +8,7 @@ import {formGroup, formAlerts} from '../utils/formUtils'
 import useForm from '../Hooks/useForm'
 
 export default function UserLogin() {
-    var initialValues = {username: null, password: null}
+    var initialValues = {username: '', password: ''}
     const [value, setValue] = useForm(initialValues)    
     const [error, setError] = useState(null)
     
@@ -24,7 +24,6 @@ export default function UserLogin() {
             if (status_code === 400){
                 setError(Object.values(response))
             }else {
-                console.log(response) 
                 localStorage.setItem('key', response.key)
                 setIsLoggedIn(true)
                 history.push('/')            
