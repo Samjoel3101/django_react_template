@@ -2,3 +2,13 @@ static-local/*
 *node_modules
 *.local
 *.env
+*bundle*.js
+staticfiles/ 
+app.conf
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
