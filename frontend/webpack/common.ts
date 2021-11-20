@@ -1,7 +1,7 @@
 import path from "path";
 import { Configuration } from "webpack";
 
-const config: Configuration = {
+export const config: Configuration = {
   entry: "./src/index.tsx",
   module: {
     rules: [
@@ -25,9 +25,7 @@ const config: Configuration = {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, "../../static/js/build/"),
+    filename: "app.build.js",
   },
 };
-
-export default config;

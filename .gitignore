@@ -4,6 +4,7 @@ static-local/*
 *.env
 *bundle*.js
 staticfiles/ 
+static/js/build
 app.conf
 .yarn/*
 !.yarn/cache

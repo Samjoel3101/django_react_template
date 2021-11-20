@@ -27,6 +27,7 @@
   },
   "scripts": {
     "lint": "",
+    "watch": "yarn webpack --config ./webpack/development.ts",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -54,6 +55,7 @@
     "@babel/runtime": "^7.16.3",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
+    "babel-loader": "^8.2.3",
     "eslint": "^8.2.0",
     "eslint-config-airbnb-typescript": "^15.0.0",
     "eslint-config-prettier": "^8.3.0",
@@ -63,6 +65,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "fork-ts-checker-webpack-plugin": "^6.4.0",
     "prettier": "^2.4.1"
   }
 }
