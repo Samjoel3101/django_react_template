@@ -1,23 +1,17 @@
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from .config import app_config, secrets_config
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "!e_sn9c6!(_czs-k4mwo_*==jnkdd4-mh9!(vr6!ol+04!#+z$"
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
 
-# Application definition
-
+# Django Apps
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -59,8 +53,13 @@ WSGI_APPLICATION = "backend.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": app_config.get("mysql", "name"),
+        "USER": app_config.get("mysql", "user"),
+        "PASSWORD": app_config.get("mysql", "password"),
+        "HOST": app_config.get("mysql", "host"),
+        "PORT": app_config.get("mysql", "port"),
+        "OPTIONS": {"charset": "utf8mb4"},
     }
 }
 
@@ -89,7 +88,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static file settings 
+# Static file settings
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
@@ -100,6 +99,7 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 )
 
+# Template settings
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
