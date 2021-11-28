@@ -8,9 +8,11 @@ SECRET_KEY = "!e_sn9c6!(_czs-k4mwo_*==jnkdd4-mh9!(vr6!ol+04!#+z$"
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = app_config.get("app", "allowed_hosts").split(",")
 
 AUTH_USER_MODEL = "accounts.User"
+
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 # Django Apps
 THIRD_PARTY_APPS = [
@@ -136,4 +138,5 @@ TEMPLATES = [
     }
 ]
 
+# Import all app settings
 from .apps import *
