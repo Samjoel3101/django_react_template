@@ -4,6 +4,14 @@ from .config import app_config, secrets_config
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+DEPLOY_TYPE = app_config.get("app", "deploy_type")
+
+# Booleans for asserting the environment type the app is running. So that we can do sthg like if settings.DEVELOPMENT: do sthg else: sthg 
+# in our code easily 
+DEVELOPMENT = DEPLOY_TYPE == "development"
+STAGE = DEPLOY_TYPE == "stage"
+PRODUCTION = DEPLOY_TYPE == "production"
+
 SECRET_KEY = "!e_sn9c6!(_czs-k4mwo_*==jnkdd4-mh9!(vr6!ol+04!#+z$"
 
 DEBUG = True
@@ -18,6 +26,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
+    "rest_framework",
+    "rest_framework.authtoken",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
 ]
 
 DJANGO_APPS = [
@@ -30,7 +42,7 @@ DJANGO_APPS = [
     "django.contrib.sites",
 ]
 
-PROJECT_APPS = ["accounts"]
+PROJECT_APPS = ["accounts.apps.AccountsConfig"]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
@@ -134,9 +146,20 @@ TEMPLATES = [
                 # `allauth` needs this from django
                 "django.template.context_processors.request",
             ],
+            "loaders": ["django.template.loaders.filesystem.Loader", "django.template.loaders.app_directories.Loader"],
         },
     }
 ]
+
+# Email
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = secrets_config.get("email", "host_user")
+EMAIL_HOST_PASSWORD = secrets_config.get("email", "host_password")
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
 
 # Import all app settings
 from .apps import *

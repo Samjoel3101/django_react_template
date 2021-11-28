@@ -1,2 +1,5 @@
+ACCOUNT_ADAPTER = "accounts.adapter.AccountAdapter"
+
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
-ACCOUNT_EMAIL_VERIFICATION = "optional"
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_REQUIRED = True
