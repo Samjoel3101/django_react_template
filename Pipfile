@@ -8,6 +8,8 @@ Django = "*"
 djangorestframework = "*"
 django-allauth = "*"
 mysqlclient = "*"
+django-mysql = "*"
+django = "==3.2"
 
 [dev-packages]
 black = "*"

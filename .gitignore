@@ -3,9 +3,12 @@ static-local/*
 *.local
 *.env
 *bundle*.js
+__pycache__
 staticfiles/ 
 static/js/build
 app.conf
+
+# Frontend ignores
 .yarn/*
 !.yarn/cache
 !.yarn/patches
